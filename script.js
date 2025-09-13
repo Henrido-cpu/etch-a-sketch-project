@@ -99,3 +99,4 @@ clearBtn.addEventListener("click", ()=>{
     const divs = document.querySelectorAll(".grid-item");
     divs.forEach(div => div.style.backgroundColor = "white");
 })
+
