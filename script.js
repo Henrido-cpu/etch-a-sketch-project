@@ -27,8 +27,11 @@ function getDivSize(arr, num){
     })
     return gridContainerWidth;
 }
-
+/*
+GET default size
+*/
  getDivSize(getDivs(16), 16);
+
 /*GET size based on user input */
 
 const input = document.querySelector("#input");
@@ -43,4 +46,33 @@ function getSizeOnUserInput(){
 
 input.addEventListener("change", getSizeOnUserInput);
 
+
+/*
+IMPLEMENT draw function
+foreach div in div arr returned addeventlistener onmousedown
+and change color for div
+*/
+/*
+GET colors
+*/
+
+function getColors(){
+    let color = "red";
+
+    return color;
+}
+
+function drawOnDivs(e){
+    const color = getColors();
+    e.target.style.backgroundColor = color;
+}
+
+gridContainer.addEventListener("mousedown", () =>{
+    gridContainer.addEventListener("mousemove", drawOnDivs);
+    gridContainer.addEventListener("mouseup", ()=>{
+        gridContainer.removeEventListener("mousemove", drawOnDivs);
+    })
+});
+
+gridContainer.addEventListener("click", drawOnDivs);
 
