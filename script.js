@@ -28,15 +28,19 @@ function getDivSize(arr, num){
     return gridContainerWidth;
 }
 
-
+ getDivSize(getDivs(16), 16);
 /*GET size based on user input */
 
 const input = document.querySelector("#input");
 function getSizeOnUserInput(){
     gridContainer.innerHTML = "";
-    let num = input.value;
+    let num = +input.value;
+    if(typeof(num) !== "number"){
+        alert("Please enter a number");
+    }
     getDivSize(getDivs(num), num);
 }
 
 input.addEventListener("change", getSizeOnUserInput);
+
 
