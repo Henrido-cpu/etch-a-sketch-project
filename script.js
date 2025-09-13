@@ -55,15 +55,21 @@ and change color for div
 /*
 GET colors
 */
+let color = "black";
 
 function getColors(){
-    let color = "red";
-
-    return color;
+   const colorButtons = document.querySelectorAll(".color-picker button");
+    colorButtons.forEach(button => {
+        button.addEventListener("click", ()=>{
+            color = "";
+            color += button.className;
+        })
+    })
 }
 
 function drawOnDivs(e){
-    const color = getColors();
+    getColors();
+    console.log(color);
     e.target.style.backgroundColor = color;
 }
 
