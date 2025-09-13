@@ -48,7 +48,7 @@ input:hover{
 .grid-item{
     flex:auto;
     background-color: rgb(255, 255, 255);
-    border: 1px solid rgba(167, 154, 154, 0.377);
+    border: 1px solid rgba(167, 154, 154, 0.308);
 }
 
 .color-picker{
@@ -58,6 +58,7 @@ input:hover{
     display:flex;
     margin-bottom: 20px;
     justify-content: space-around;
+    border-radius: 10px;
 }
 
 .color-picker button{
@@ -66,10 +67,16 @@ input:hover{
     transition: 0.3s scale;
     cursor:pointer;
     border: none;
+    border-radius: 10px;
 }
 
 .color-picker button:hover{
     scale: 1.1;
+}
+
+.color-picker button:active{
+    box-shadow: 0 0 10px white inset;
+    border: 5px solid black;
 }
 
 .red{
