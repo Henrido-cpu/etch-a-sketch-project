@@ -73,7 +73,8 @@ function drawOnDivs(e){
     e.target.style.backgroundColor = color;
 }
 
-gridContainer.addEventListener("mousedown", () =>{
+gridContainer.addEventListener("mousedown", (e) =>{
+    e.preventDefault();
     gridContainer.addEventListener("mousemove", drawOnDivs);
     gridContainer.addEventListener("mouseup", ()=>{
         gridContainer.removeEventListener("mousemove", drawOnDivs);

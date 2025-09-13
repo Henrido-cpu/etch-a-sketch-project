@@ -48,7 +48,7 @@ input:hover{
 .grid-item{
     flex:auto;
     background-color: rgb(255, 255, 255);
-    border: 1px solid rgb(167, 154, 154);
+    border: 1px solid rgba(167, 154, 154, 0.377);
 }
 
 .color-picker{
