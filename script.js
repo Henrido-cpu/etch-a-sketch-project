@@ -83,3 +83,19 @@ gridContainer.addEventListener("mousedown", (e) =>{
 
 gridContainer.addEventListener("click", drawOnDivs);
 
+/*
+GET eraser and trashcan and CREATE function to handle logic
+*/
+
+const eraser = document.querySelector(".eraser");
+const trashcan = document.querySelector(".trashcan");
+eraser.addEventListener("click", (e)=>{
+    e.preventDefault();
+    color = "white";
+})
+
+const clearBtn = document.querySelector(".delete");
+clearBtn.addEventListener("click", ()=>{
+    const divs = document.querySelectorAll(".grid-item");
+    divs.forEach(div => div.style.backgroundColor = "white");
+})

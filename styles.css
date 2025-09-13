@@ -24,7 +24,6 @@ body{
 input{
     width:50%;
     height:3em;
-    margin-bottom: 20px;
     border-radius:15px;
     text-align: center;
     transition: 0.5s scale;
@@ -51,6 +50,7 @@ input:hover{
     border: 1px solid rgba(167, 154, 154, 0.308);
 }
 
+
 .color-picker{
     padding:10px;
     width:100%;
@@ -64,7 +64,7 @@ input:hover{
 .color-picker button{
     height: 50px;
     width:50px;
-    transition: 0.3s scale;
+    transition: 0.3s scale, 0.1s box-shadow, 0.1s border;
     cursor:pointer;
     border: none;
     border-radius: 10px;
@@ -74,7 +74,7 @@ input:hover{
     scale: 1.1;
 }
 
-.color-picker button:active{
+.color-picker button:active, img:active{
     box-shadow: 0 0 10px white inset;
     border: 5px solid black;
 }
@@ -101,4 +101,64 @@ input:hover{
 
 .black{
     background-color: black;
+}
+
+.input-and-options-container{
+    display: flex;
+    width:100%;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom:20px;
+}
+
+.eraser, .delete{
+    width: 30px;
+    background-color: rgba(255, 255, 255, 0.753);
+    border-radius: 10px;
+    transition: 0.3s scale, 0.1s box-shadow, 0.1s border;
+}
+
+.eraser:hover, .delete:hover{
+    scale: 1.2;
+    cursor:pointer;
+}
+
+.grid-item:hover{
+    border: 1px solid grey;
+}
+
+.grid-container:hover{
+    cursor:cell;
+}
+
+@media (max-width: 500px) {
+    .grid-container{
+        width:300px;
+        height:300px;
+        overflow: hidden;
+    }
+    
+}
+
+@media (max-width: 350px){
+    .grid-container{
+        width:250px;
+        height:250px;
+        overflow: hidden;
+    }
+
+    .grid-main-container{
+        padding: 10px;
+    }
+
+    .input-and-options-container{
+        flex-wrap: wrap;
+    }
+    .color-picker button{
+        width:20px;
+        height:20px;
+    }
+    .color-picker{
+        flex-wrap: wrap;
+    }
 }
