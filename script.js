@@ -62,6 +62,7 @@ const colorButtons = document.querySelectorAll(".color-picker button");
 colorButtons.forEach(button => {
     button.addEventListener("click", ()=>{
         rainbowModeOn = false;
+        shadowModeOn = false;
         color = "";
         color += button.className;
     })
@@ -73,6 +74,9 @@ function drawOnDivs(e){
     if(rainbowModeOn){
         color = "";
         color += returnRandomRgb();
+    }
+    if(shadowModeOn && e.target.className == "grid-item"){
+        e.target.style.opacity += "0.1";
     }
     e.target.style.backgroundColor = color;
 }
@@ -96,6 +100,8 @@ const trashcan = document.querySelector(".trashcan");
 eraser.addEventListener("click", (e)=>{
     e.preventDefault();
     color = "white";
+    e.target.style.opacity = 1;
+    e.target.style.border = "1px solid rgba(167, 154, 154, 0.308);"
 })
 
 const clearBtn = document.querySelector(".delete");
@@ -106,7 +112,7 @@ clearBtn.addEventListener("click", ()=>{
 
 
 /*
-GET random color
+GET random color and enable rainbow mode based on click of button
 */
 let rainbowModeOn = false;
 
@@ -122,3 +128,14 @@ function returnRandomRgb(){
     randomColorBtn.addEventListener("click", () =>{
         rainbowModeOn = true;
     })
+
+
+/*
+GET shadow button and transform opacity of color based on interaction
+*/
+let shadowModeOn = false;
+
+const shadowBtn = document.querySelector(".shadow");
+shadowBtn.addEventListener("click", ()=>{
+    shadowModeOn = true;
+})
