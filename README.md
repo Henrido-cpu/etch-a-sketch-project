@@ -36,7 +36,7 @@ Step 8 : I created eraser and erase all options.
 
 Step 9 : I also created a rainbow feature where each div gets colored randomly with each interaction. 
 
-Step 10 : Here i tried to create the second extra challenge TOP provided, but it didn't really fit my code well and i didn't really like it as a feature so didn't want to spent more time on it. I might implement it later for refreshing my mind about DOM manipulation.
+Step 10 : Create shadow feature where each divs opacity lowers toward black container background for shadow effect.
 
 Step 11 : Thats it!
 
