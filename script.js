@@ -76,7 +76,7 @@ function drawOnDivs(e){
         color += returnRandomRgb();
     }
     if(shadowModeOn && e.target.className == "grid-item"){
-        e.target.style.opacity += "0.1";
+        
     }
     e.target.style.backgroundColor = color;
 }
@@ -100,8 +100,6 @@ const trashcan = document.querySelector(".trashcan");
 eraser.addEventListener("click", (e)=>{
     e.preventDefault();
     color = "white";
-    e.target.style.opacity = 1;
-    e.target.style.border = "1px solid rgba(167, 154, 154, 0.308);"
 })
 
 const clearBtn = document.querySelector(".delete");
