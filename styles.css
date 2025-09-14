@@ -111,14 +111,14 @@ input:hover{
     margin-bottom:20px;
 }
 
-.eraser, .delete{
+.eraser, .delete, .rainbow{
     width: 30px;
     background-color: rgba(255, 255, 255, 0.753);
     border-radius: 10px;
     transition: 0.3s scale, 0.1s box-shadow, 0.1s border;
 }
 
-.eraser:hover, .delete:hover{
+.eraser:hover, .delete:hover, .rainbow:hover{
     scale: 1.2;
     cursor:pointer;
 }
@@ -129,6 +129,11 @@ input:hover{
 
 .grid-container:hover{
     cursor:cell;
+}
+
+.rainbow{
+    background: linear-gradient(red, pink, yellow, green, blue);
+    border-radius:5px;
 }
 
 .attribution{

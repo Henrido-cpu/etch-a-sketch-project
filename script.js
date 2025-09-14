@@ -57,19 +57,23 @@ GET colors
 */
 let color = "black";
 
-function getColors(){
-   const colorButtons = document.querySelectorAll(".color-picker button");
-    colorButtons.forEach(button => {
-        button.addEventListener("click", ()=>{
-            color = "";
-            color += button.className;
-        })
+
+const colorButtons = document.querySelectorAll(".color-picker button");
+colorButtons.forEach(button => {
+    button.addEventListener("click", ()=>{
+        rainbowModeOn = false;
+        color = "";
+        color += button.className;
     })
-}
+})
+
 
 function drawOnDivs(e){
-    getColors();
     console.log(color);
+    if(rainbowModeOn){
+        color = "";
+        color += returnRandomRgb();
+    }
     e.target.style.backgroundColor = color;
 }
 
@@ -100,3 +104,21 @@ clearBtn.addEventListener("click", ()=>{
     divs.forEach(div => div.style.backgroundColor = "white");
 })
 
+
+/*
+GET random color
+*/
+let rainbowModeOn = false;
+
+function randomNumber(){
+let random = Math.floor(Math.random() * 255); 
+return random;
+}
+
+function returnRandomRgb(){
+    return `rgb(${randomNumber()}, ${randomNumber()}, ${randomNumber()})`; 
+}
+    const randomColorBtn = document.querySelector(".rainbow");
+    randomColorBtn.addEventListener("click", () =>{
+        rainbowModeOn = true;
+    })
