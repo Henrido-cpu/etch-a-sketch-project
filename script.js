@@ -38,8 +38,8 @@ const input = document.querySelector("#input");
 function getSizeOnUserInput(){
     gridContainer.innerHTML = "";
     let num = +input.value;
-    if(typeof(num) !== "number"){
-        alert("Please enter a number");
+    if(!num){
+        getDivSize(getDivs(16), 16);
     }
     getDivSize(getDivs(num), num);
 }
