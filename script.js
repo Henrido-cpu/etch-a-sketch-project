@@ -75,19 +75,20 @@ function drawOnDivs(e){
     if(e.target.style.opacity === ""){
         e.target.style.opacity = 1;
     }
-    console.log(color);
-    if(rainbowModeOn){
-        color = "";
-        color += returnRandomRgb();
-    }
     if(shadowModeOn && e.target.className !== "grid-container"){
+        color = e.target.style.backgroundColor;
         if(e.target.style.opacity > 0){
             e.target.style.opacity -= 0.1;
-            console.log(e.target.style.opacity)
         }
     }
     if(!shadowModeOn){
         e.target.style.opacity = 1;
+    }
+    console.log(color);
+    if(rainbowModeOn){
+        e.target.style.opacity = 1;
+        color = "";
+        color += returnRandomRgb();
     }
     if(eraserModeOn){
         color = "";
@@ -97,8 +98,6 @@ function drawOnDivs(e){
     if(e.target.className !== "grid-container"){
         e.target.style.backgroundColor = color;
     }
-    console.log(e.target.style)
-    console.log(e.target.style.opacity)
 }
 
 
@@ -151,6 +150,7 @@ function returnRandomRgb(){
     const randomColorBtn = document.querySelector(".rainbow");
     randomColorBtn.addEventListener("click", () =>{
         eraserModeOn = false;
+        shadowModeOn = false;
         rainbowModeOn = true;
     })
 
@@ -163,4 +163,5 @@ let shadowModeOn = false;
 const shadowBtn = document.querySelector(".shadow");
 shadowBtn.addEventListener("click", ()=>{
     shadowModeOn = true;
+    rainbowModeOn = false;
 })
