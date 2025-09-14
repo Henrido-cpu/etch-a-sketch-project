@@ -34,7 +34,6 @@ input:hover{
 }
 
 .grid-container{
-    background-color: red;
     display:flex;
     height:500px;
     align-items: center;
@@ -42,6 +41,7 @@ input:hover{
     width:500px;
     flex-wrap: wrap;
     flex-direction: column;
+    background-color: black;
 }
 
 .grid-item{

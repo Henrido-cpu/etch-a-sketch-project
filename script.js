@@ -61,6 +61,7 @@ let color = "black";
 const colorButtons = document.querySelectorAll(".color-picker button");
 colorButtons.forEach(button => {
     button.addEventListener("click", ()=>{
+        eraserModeOn = false;
         rainbowModeOn = false;
         shadowModeOn = false;
         color = "";
@@ -68,23 +69,39 @@ colorButtons.forEach(button => {
     })
 })
 
-
 function drawOnDivs(e){
+    console.log(e.target);
+    if(e.target.style.opacity === ""){
+        e.target.style.opacity = 1;
+    }
     console.log(color);
     if(rainbowModeOn){
         color = "";
         color += returnRandomRgb();
     }
-    if(shadowModeOn && e.target.className == "grid-item"){
-        
+    if(shadowModeOn && e.target.className !== "grid-container"){
+        if(e.target.style.opacity > 0){
+            e.target.style.opacity -= 0.1;
+            console.log(e.target.style.opacity)
+        }
     }
-    e.target.style.backgroundColor = color;
+    if(eraserModeOn){
+        color = "";
+        color = "white";
+        e.target.style.opacity = 1;
+    }
+    if(e.target.className !== "grid-container"){
+        e.target.style.backgroundColor = color;
+    }
+    console.log(e.target.style)
+    console.log(e.target.style.opacity)
 }
+
 
 gridContainer.addEventListener("mousedown", (e) =>{
     e.preventDefault();
     gridContainer.addEventListener("mousemove", drawOnDivs);
-    gridContainer.addEventListener("mouseup", ()=>{
+    gridContainer.addEventListener("mouseup", (e)=>{
         gridContainer.removeEventListener("mousemove", drawOnDivs);
     })
 });
@@ -94,18 +111,23 @@ gridContainer.addEventListener("click", drawOnDivs);
 /*
 GET eraser and trashcan and CREATE function to handle logic
 */
+let eraserModeOn = false;
 
 const eraser = document.querySelector(".eraser");
 const trashcan = document.querySelector(".trashcan");
 eraser.addEventListener("click", (e)=>{
     e.preventDefault();
     color = "white";
+    eraserModeOn = true;
 })
 
 const clearBtn = document.querySelector(".delete");
 clearBtn.addEventListener("click", ()=>{
     const divs = document.querySelectorAll(".grid-item");
-    divs.forEach(div => div.style.backgroundColor = "white");
+    divs.forEach(div => {
+        div.style.backgroundColor = "white"
+        div.style.opacity = 1;
+    });
 })
 
 
@@ -124,6 +146,7 @@ function returnRandomRgb(){
 }
     const randomColorBtn = document.querySelector(".rainbow");
     randomColorBtn.addEventListener("click", () =>{
+        eraserModeOn = false;
         rainbowModeOn = true;
     })
 
