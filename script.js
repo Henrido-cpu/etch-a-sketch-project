@@ -69,6 +69,7 @@ colorButtons.forEach(button => {
     })
 })
 
+
 function drawOnDivs(e){
     console.log(e.target);
     if(e.target.style.opacity === ""){
@@ -84,6 +85,9 @@ function drawOnDivs(e){
             e.target.style.opacity -= 0.1;
             console.log(e.target.style.opacity)
         }
+    }
+    if(!shadowModeOn){
+        e.target.style.opacity = 1;
     }
     if(eraserModeOn){
         color = "";
