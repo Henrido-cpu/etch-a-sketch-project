@@ -158,11 +158,20 @@ a{
 
 @media (max-width: 500px) {
     .grid-container{
-        width:300px;
-        height:300px;
+        width:280px;
+        height:280px;
         overflow: hidden;
     }
     
+}
+
+@media(max-width: 400){
+    .grid-item:hover{
+        border:none;
+    }
+    .grid-item:active{
+        border:none;
+    }
 }
 
 @media (max-width: 350px){
