@@ -72,6 +72,7 @@ colorButtons.forEach(button => {
 
 function drawOnDivs(e){
     console.log(e.target);
+    console.log(e);
     if(e.target.style.opacity === ""){
         e.target.style.opacity = 1;
     }
@@ -98,6 +99,11 @@ function drawOnDivs(e){
     if(e.target.className !== "grid-container"){
         e.target.style.backgroundColor = color;
     }
+    let location = e.touches[0];
+    let realTarget = document.elementFromPoint(location.clientX, location.clientY);
+    if(realTarget && realTarget.className === "grid-item"){
+        realTarget.style.backgroundColor = color;
+    }
 }
 
 
@@ -110,6 +116,21 @@ gridContainer.addEventListener("mousedown", (e) =>{
 });
 
 gridContainer.addEventListener("click", drawOnDivs);
+
+/*
+Add touch events for mobile users
+*/
+
+gridContainer.addEventListener("touchstart", (e) =>{
+    e.preventDefault();
+    gridContainer.addEventListener("touchmove", drawOnDivs);
+    gridContainer.addEventListener("touchend", (e)=>{
+        gridContainer.removeEventListener("touchmove", drawOnDivs);
+    })
+});
+gridContainer.addEventListener("touchcancel", ()=>{
+    gridContainer.removeEventListener("touchmove", drawOnDivs);
+})
 
 /*
 GET eraser and trashcan and CREATE function to handle logic
