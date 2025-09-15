@@ -165,6 +165,15 @@ a{
     
 }
 
+@media(max-width: 400){
+    .grid-item:hover{
+        border:none;
+    }
+    .grid-item:active{
+        border:none;
+    }
+}
+
 @media (max-width: 350px){
     .grid-container{
         width:250px;

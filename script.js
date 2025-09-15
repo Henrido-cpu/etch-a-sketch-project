@@ -86,6 +86,7 @@ function drawOnDivs(e){
         e.target.style.opacity = 1;
     }
     console.log(color);
+
     if(rainbowModeOn){
         e.target.style.opacity = 1;
         color = "";
@@ -96,13 +97,15 @@ function drawOnDivs(e){
         color = "white";
         e.target.style.opacity = 1;
     }
-    if(e.target.className !== "grid-container"){
+    if(e.target.className !== "grid-container" && e.type !== "touchmove"){
         e.target.style.backgroundColor = color;
     }
-    let location = e.touches[0];
-    let realTarget = document.elementFromPoint(location.clientX, location.clientY);
-    if(realTarget && realTarget.className === "grid-item"){
-        realTarget.style.backgroundColor = color;
+    if(e.type !== "click"){
+        let location = e.touches[0];
+        let realTarget = document.elementFromPoint(location.clientX, location.clientY);
+        if(realTarget && realTarget.className === "grid-item"){
+            realTarget.style.backgroundColor = color;
+        }  
     }
 }
 
@@ -121,10 +124,9 @@ gridContainer.addEventListener("click", drawOnDivs);
 Add touch events for mobile users
 */
 
-gridContainer.addEventListener("touchstart", (e) =>{
-    e.preventDefault();
+gridContainer.addEventListener("touchstart", () =>{
     gridContainer.addEventListener("touchmove", drawOnDivs);
-    gridContainer.addEventListener("touchend", (e)=>{
+    gridContainer.addEventListener("touchend", ()=>{
         gridContainer.removeEventListener("touchmove", drawOnDivs);
     })
 });
