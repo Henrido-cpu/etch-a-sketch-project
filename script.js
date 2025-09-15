@@ -97,6 +97,11 @@ function drawOnDivs(e){
         color = "white";
         e.target.style.opacity = 1;
     }
+    if(e.type === "touchstart"){
+        e.preventDefault()
+        color = "";
+        e.target.style.backgroundColor = color;
+    }
     if(e.target.className !== "grid-container" && e.type !== "touchmove"){
         e.target.style.backgroundColor = color;
     }
