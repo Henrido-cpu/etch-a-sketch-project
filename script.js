@@ -119,7 +119,9 @@ gridContainer.addEventListener("mousedown", (e) =>{
 });
 
 gridContainer.addEventListener("click", drawOnDivs);
-
+document.addEventListener("mouseup", ()=>{
+    gridContainer.removeEventListener("mousemove", drawOnDivs);
+});
 /*
 Add touch events for mobile users
 */
@@ -131,6 +133,9 @@ gridContainer.addEventListener("touchstart", () =>{
     })
 });
 gridContainer.addEventListener("touchcancel", ()=>{
+    gridContainer.removeEventListener("touchmove", drawOnDivs);
+});
+document.addEventListener("touchend", ()=>{
     gridContainer.removeEventListener("touchmove", drawOnDivs);
 })
 
